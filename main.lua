@@ -1624,7 +1624,7 @@
 	local spawnBoat = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/SpawnBoat"]
 	local despawnBoat = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/DespawnBoat"]
 	local FishingRadar = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/UpdateFishingRadar"]
-	local tpFolder = workspace["!!!! ISLAND LOCATIONS !!!!"]
+	local tpFolder = workspace:WaitForChild("!!!! ISLAND LOCATIONS !!!!")
 
 	local index = 0
 	--local isAlreadySpawned
@@ -1678,6 +1678,7 @@
 --else
 --	warn("listBoat nil, tidak bisa hapus anak")
 --end
+
 
 
 	--local yPos = 0.1
@@ -1810,6 +1811,10 @@
 	
 	TPIslandButton.MouseButton1Click:Connect(function()
 		ListOfTPIsland.Visible = true
+		print(tpFolder)  -- harusnya bukan nil
+print(ListOfTPIsland) -- harusnya bukan nil
+print(#tpFolder:GetChildren()) -- apakah ada isi?
+print(#ListOfTPIsland:GetChildren()) -- ini harusnya 0 saat baru dibuat
 	end)
 
 
