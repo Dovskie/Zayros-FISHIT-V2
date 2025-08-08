@@ -1809,7 +1809,7 @@
 	end)
 	
 	TPIslandButton.MouseButton1Click:Connect(function()
-		
+		ListOfTPIsland.Visible = true
 	end)
 
 
