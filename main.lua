@@ -1671,13 +1671,13 @@
 	end)
 
 
-if ListOfTPIsland then
-	for _, child in ipairs(ListOfTPIsland:GetChildren()) do
-		child:Destroy()
-	end
-else
-	warn("listBoat nil, tidak bisa hapus anak")
-end
+--if ListOfTPIsland then
+--	for _, child in ipairs(ListOfTPIsland:GetChildren()) do
+--		child:Destroy()
+--	end
+--else
+--	warn("listBoat nil, tidak bisa hapus anak")
+--end
 
 
 	local yPos = 0.1
