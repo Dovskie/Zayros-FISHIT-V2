@@ -1672,24 +1672,24 @@ ListOfTPIsland:ClearAllChildren()
 local yPos = 0.1
 local padding = 0.02
 
-for _, island in ipairs(tpFolder:GetChildren()) do
-	if island:IsA("Part") then
-		local btn = Instance.new("TextButton")
-		btn.Size = UDim2.new(1, 0, yPos, 0)
-		btn.Position = btn.Position = UDim2.new(0, 0, (yPos + padding) * index, 0)
-		btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-		btn.Text = island.Name
-		btn.TextScaled = true
-		btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-		btn.Font = Enum.Font.GothamBold
-		btn.Parent = ListOfTPIsland
+--for _, island in ipairs(tpFolder:GetChildren()) do
+--	if island:IsA("Part") then
+--		local btn = Instance.new("TextButton")
+--		btn.Size = UDim2.new(1, 0, yPos, 0)
+--		btn.Position = btn.Position = UDim2.new(0, 0, (yPos + padding) * index, 0)
+--		btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+--		btn.Text = island.Name
+--		btn.TextScaled = true
+--		btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+--		btn.Font = Enum.Font.GothamBold
+--		btn.Parent = ListOfTPIsland
 		
-		btn.MouseButton1Click:Connect(function()
-			player.Character:SetPrimaryPartCFrame(island.CFrame)
-		end)
-		index += 1
-	end
-end
+--		btn.MouseButton1Click:Connect(function()
+--			player.Character:SetPrimaryPartCFrame(island.CFrame)
+--		end)
+--		index += 1
+--	end
+--end
 
 local pages = {
 	Main = MainFrame,
@@ -1781,6 +1781,8 @@ TELEPORT.MouseButton1Click:Connect(function()
 	showPanel("TPEvent")
 end)
 
+
+
 NoOxygenButton.MouseButton1Click:Connect(function()
 	_G.OxygenBypass = not _G.OxygenBypass
 
@@ -1791,12 +1793,14 @@ NoOxygenButton.MouseButton1Click:Connect(function()
 	end
 end)
 
-SetWalkSpeedButton.MouseButton1Click:Connect(function()
-	local input = WalkSpeedTextBox.Text
-	local speed = tonumber(input)
-	if speed and character:FindFirstChildOfClass("Humanoid") then
-		character:FindFirstChildOfClass("Humanoid").WalkSpeed = speed
-	end
-end)
+
+
+--SetWalkSpeedButton.MouseButton1Click:Connect(function()
+--	local input = WalkSpeedTextBox.Text
+--	local speed = tonumber(input)
+--	if speed and character:FindFirstChildOfClass("Humanoid") then
+--		character:FindFirstChildOfClass("Humanoid").WalkSpeed = speed
+--	end
+--end)
 
 showPanel("Main")
