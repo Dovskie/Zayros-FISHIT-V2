@@ -1862,12 +1862,12 @@
 		--print("Membuka Player List Baru")
 	end)
 
-	SellAllButton.MouseButton1Click:Connect(function()
-		sellAll:InvokeServer()
-	end)
+	--SellAllButton.MouseButton1Click:Connect(function()
+	--	sellAll:InvokeServer()
+	--end)
 	
-	UnlimitedJumpButton.MouseButton1Click:Connect(function()
-		infiniteJumpEnabled = not infiniteJumpEnabled
-	end)
+	--UnlimitedJumpButton.MouseButton1Click:Connect(function()
+	--	infiniteJumpEnabled = not infiniteJumpEnabled
+	--end)
 
 	showPanel("Main")
