@@ -1743,6 +1743,7 @@
 	
 	for _, player in ipairs(charFolder:GetChildren()) do
 		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
+			print("Halo")
 			local btn = Instance.new("TextButton")
 			btn.Name = player.Name
 			btn.Size = UDim2.new(1, 0, 0.1, 0)
@@ -1873,6 +1874,7 @@ TPIslandButton.MouseButton1Click:Connect(function()
 end)
 TPPlayerButton.MouseButton1Click:Connect(function()
 	ToggleList("Player")
+	print("Membuka Player List Baru")
 end)
 
 
