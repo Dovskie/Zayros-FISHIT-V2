@@ -1680,13 +1680,13 @@
 	}
 	
 	local function CloseAll()
-		isOpen.Island = false,
-		isOpen.Player = false,
-		isOpen.Event = false,
-		
-		ListOfTPIsland.Visible = false,
-		ListOfTpPlayer.Visible = false,
-		ListOfTPEvent.Visible = false
+	isOpen.Island = false
+	isOpen.Player = false
+	isOpen.Event = false
+
+	ListOfTPIsland.Visible = false
+	ListOfTpPlayer.Visible = false
+	ListOfTPEvent.Visible = false
 	end
 	
 	local function ToggleList(name)
