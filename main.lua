@@ -1630,15 +1630,13 @@
 	local tpFolder = workspace["!!!! ISLAND LOCATIONS !!!!"]
 	local sellAll =  Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/SellAllItems"]
 	local UIS = game:GetService("UserInputService")
-
-
 	local charFolder = workspace.Characters
 
 	local index = 0
 	
 	_G.AutoFishing = false
 	_G.OxygenBypass = false
-	_G.UnlimitedJump = false
+	local infiniteJumpEnabled = false
 
 	local mt = getrawmetatable(game)
 	setreadonly(mt, false)
@@ -1791,7 +1789,7 @@
 	end
 	
 	UIS.JumpRequest:Connect(function()
-		if _G.UnlimitedJump then
+		if infiniteJumpEnabled then
 			local humanoid = game.Players.LocalPlayer.Character.Humanoid
 			humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 		end
@@ -1869,7 +1867,7 @@
 	end)
 	
 	UnlimitedJumpButton.MouseButton1Click:Connect(function()
-		_G.UnlimitedJump = not _G.UnlimitedJump
+		infiniteJumpEnabled = not infiniteJumpEnabled
 	end)
 
 	showPanel("Main")
