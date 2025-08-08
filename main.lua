@@ -1746,14 +1746,12 @@
 			print("Halo")
 			local btn = Instance.new("TextButton")
 			btn.Name = player.Name
-			btn.Size = UDim2.new(1, 0, 0.1, 0)
-			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * indexPlayer, 0)
+			btn.Parent = ListOfTpPlayer
+			btn.TextColor3 = Color3.fromRGB(255, 255, 255)
 			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 			btn.Text = player.Name
-			btn.TextScaled = true
-			btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-			btn.Font = Enum.Font.GothamBold
-			btn.Parent = ListOfTpPlayer
+			btn.Size = UDim2.new(1, 0, 0.1, 0)
+			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * indexPlayer, 0)
 			
 			btn.MouseButton1Click:Connect(function()
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.HumanoidRootPart.CFrame
