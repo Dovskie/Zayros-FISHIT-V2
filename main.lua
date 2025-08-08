@@ -1722,29 +1722,29 @@
 		end
 	end
 	
-	--for _, player in ipairs(charFolder:GetChildren()) do
-	--	if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer.Name then
-	--		print("Button kebuat sebanyak " .. #charFolder)
-	--		local btn = Instance.new("TextButton")
-	--		btn.Name = player.Name
-	--		btn.Size = UDim2.new(1, 0, 0.1, 0)
-	--		btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * indexPlayer, 0)
-	--		btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	--		btn.Text = player.Name
-	--		btn.TextScaled = true
-	--		btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-	--		btn.Font = Enum.Font.GothamBold
-	--		btn.Parent = ListOfTpPlayer
+	for _, player in ipairs(charFolder:GetChildren()) do
+		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer.Name then
+			print("Button kebuat sebanyak " .. #charFolder)
+			local btn = Instance.new("TextButton")
+			btn.Name = player.Name
+			btn.Size = UDim2.new(1, 0, 0.1, 0)
+			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * indexPlayer, 0)
+			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			btn.Text = player.Name
+			btn.TextScaled = true
+			btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+			btn.Font = Enum.Font.GothamBold
+			btn.Parent = ListOfTpPlayer
 			
-	--		btn.MouseButton1Click:Connect(function()
-	--			local char = player:FindFirstChild("HumanoidRootPart")
-	--			if char then
-	--				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = char.CFrame
-	--			end
-	--		end)
-	--		indexPlayer += 1
-	--	end
-	--end
+			--btn.MouseButton1Click:Connect(function()
+			--	local char = player:FindFirstChild("HumanoidRootPart")
+			--	if char then
+			--		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = char.CFrame
+			--	end
+			--end)
+			indexPlayer += 1
+		end
+	end
 	
 
 	local pages = {
