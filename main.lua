@@ -1724,7 +1724,7 @@
 	
 	for _, player in ipairs(charFolder:GetChildren()) do
 		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
-			print("Halo")
+			--print("Halo")
 			local btn = Instance.new("TextButton")
 			btn.Name = player.Name
 			btn.Parent = ListOfTpPlayer
@@ -1788,12 +1788,12 @@
 		end
 	end
 	
-	UIS.JumpRequest:Connect(function()
-		if infiniteJumpEnabled then
-			local humanoid = game.Players.LocalPlayer.Character.Humanoid
-			humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-		end
-	end)
+	--UIS.JumpRequest:Connect(function()
+	--	if infiniteJumpEnabled then
+	--		local humanoid = game.Players.LocalPlayer.Character.Humanoid
+	--		humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+	--	end
+	--end)
 
 	function showPanel(pageName)
 		for _, panel in pairs(pages) do
@@ -1859,7 +1859,7 @@
 	end)
 	TPPlayerButton.MouseButton1Click:Connect(function()
 		ToggleList("Player")
-		print("Membuka Player List Baru")
+		--print("Membuka Player List Baru")
 	end)
 
 	SellAllButton.MouseButton1Click:Connect(function()
