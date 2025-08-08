@@ -1636,26 +1636,6 @@
 
 	local index = 0
 	
-	--local isAlreadySpawned
-
-
-	--function checkerSpawnedBoat(state, boatID)
-	--	if state == false then
-	--		isAlreadySpawned = false
-	--		SpawnBoat:InvokeServer(
-	--			boatID
-	--		)
-	--		isAlreadySpawned = true
-	--	elseif state == true then
-	--		isAlreadySpawned = true
-	--		despawnBoat:InvokeServer()
-	--		SpawnBoat:InvokeServer(
-	--			boatID
-	--		)
-	--	end
-	--end
-	
-
 	_G.AutoFishing = false
 	_G.OxygenBypass = false
 	_G.UnlimitedJump = false
@@ -1721,10 +1701,6 @@
 			end
 		end
 	end
-
-
-	--local yPos = 0.1
-	--local padding = 0.02
 
 	for _, island in ipairs(tpFolder:GetChildren()) do
 		if island:IsA("BasePart") then
@@ -1809,7 +1785,7 @@
 
 			pcall(function()
 				CancelFishing:InvokeServer()
-				UnEquipRod:FireServer() -- ✅ pake remote yang benar sekarang
+				UnEquipRod:FireServer()
 			end)
 		end
 	end
@@ -1817,6 +1793,7 @@
 	UIS.JumpRequest:Connect(function()
 		if _G.UnlimitedJump then
 			local humanoid = game.Players.LocalPlayer.Character.Humanoid
+			humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 		end
 	end)
 
@@ -1894,15 +1871,5 @@
 	UnlimitedJumpButton.MouseButton1Click:Connect(function()
 		_G.UnlimitedJump = not _G.UnlimitedJump
 	end)
-
-
-
-	--SetWalkSpeedButton.MouseButton1Click:Connect(function()
-	--	local input = WalkSpeedTextBox.Text
-	--	local speed = tonumber(input)
-	--	if speed and character:FindFirstChildOfClass("Humanoid") then
-	--		character:FindFirstChildOfClass("Humanoid").WalkSpeed = speed
-	--	end
-	--end)
 
 	showPanel("Main")
