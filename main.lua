@@ -1741,12 +1741,12 @@
 	--end
 	
 
-	--local pages = {
-	--	Main = MainFrame,
-	--	Player = PlayerFrame,
-	--	Teleport = Teleport,
-	--	Boat = SpawnBoatFrame,
-	--}
+	local pages = {
+		Main = MainFrame,
+		Player = PlayerFrame,
+		Teleport = Teleport,
+		Boat = SpawnBoatFrame,
+	}
 
 	--local autoFishThread = nil
 
