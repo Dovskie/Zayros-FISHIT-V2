@@ -1632,25 +1632,6 @@
 
 	local indexIsland = 0
 	local indexPlayer = 0
-	--local isAlreadySpawned
-
-
-	--function checkerSpawnedBoat(state, boatID)
-	--	if state == false then
-	--		isAlreadySpawned = false
-	--		SpawnBoat:InvokeServer(
-	--			boatID
-	--		)
-	--		isAlreadySpawned = true
-	--	elseif state == true then
-	--		isAlreadySpawned = true
-	--		despawnBoat:InvokeServer()
-	--		SpawnBoat:InvokeServer(
-	--			boatID
-	--		)
-	--	end
-	--end
-
 
 	_G.AutoFishing = false
 	_G.OxygenBypass = false
@@ -1742,8 +1723,7 @@
 	end
 	
 	for _, player in ipairs(charFolder:GetChildren()) do
-		
-		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
+		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer.Name then
 			print("Button kebuat sebanyak " .. #charFolder)
 			local btn = Instance.new("TextButton")
 			btn.Name = player.Name
@@ -1759,7 +1739,6 @@
 			btn.MouseButton1Click:Connect(function()
 				local char = player:FindFirstChild("HumanoidRootPart")
 				if char then
-					character = char
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = char.CFrame
 				end
 			end)
