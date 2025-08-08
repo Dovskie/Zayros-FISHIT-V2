@@ -1632,188 +1632,184 @@
 	local UIS = game:GetService("UserInputService")
 	local charFolder = workspace.Characters
 
-	local index = 0
+	--local index = 0
 
-	_G.AutoFishing = false
-	_G.OxygenBypass = false
+	--_G.AutoFishing = false
+	--_G.OxygenBypass = false
 
-	local mt = getrawmetatable(game)
-	setreadonly(mt, false)
+	--local mt = getrawmetatable(game)
+	--setreadonly(mt, false)
 
-	local oldNamecall = mt.__namecall
+	--local oldNamecall = mt.__namecall
 
-	mt.__namecall = newcclosure(function(self, ...)
-		local args = {...}
-		local method = getnamecallmethod()
+	--mt.__namecall = newcclosure(function(self, ...)
+	--	local args = {...}
+	--	local method = getnamecallmethod()
 
-		if self == Oxygen and method == "FireServer" and args[1] == 20 then
-			if _G.OxygenBypass then
-				return oldNamecall(self, 0)
-			else
-				return oldNamecall(self, 20)
-			end
-		end
+	--	if self == Oxygen and method == "FireServer" and args[1] == 20 then
+	--		if _G.OxygenBypass then
+	--			return oldNamecall(self, 0)
+	--		else
+	--			return oldNamecall(self, 20)
+	--		end
+	--	end
 
-		return oldNamecall(self, unpack(args))
-	end)
+	--	return oldNamecall(self, unpack(args))
+	--end)
 
 
-	local isOpen = {
-		Island = false,
-		Player = false,
-		Event = false,
-	}
+	--local isOpen = {
+	--	Island = false,
+	--	Player = false,
+	--	Event = false,
+	--}
 	
-	local function CloseAll()
-		isOpen.Island = false
-		isOpen.Player = false
-		isOpen.Event = false
+	--local function CloseAll()
+	--	isOpen.Island = false
+	--	isOpen.Player = false
+	--	isOpen.Event = false
 		
-		ListOfTPIsland.Visible = false
-		ListOfTpPlayer.Visible = false
-		ListOfTPEvent.Visible = false
-	end
+	--	ListOfTPIsland.Visible = false
+	--	ListOfTpPlayer.Visible = false
+	--	ListOfTPEvent.Visible = false
+	--end
 	
-	local function ToggleList(name)
-		if not isOpen[name] then
-			CloseAll()
+	--local function ToggleList(name)
+	--	if not isOpen[name] then
+	--		CloseAll()
 			
-			isOpen[name] = true
-			if name == "Island" then
-				ListOfTPIsland.Visible = true
-			elseif name == "Player" then
-				ListOfTpPlayer.Visible = true
-			elseif name == "Event" then
-				ListOfTPEvent.Visible = true
-			end
-		else
-			-- Kalau sudah buka, langsung tutup
-			isOpen[name] = false
-			if name == "Island" then
-				ListOfTPIsland.Visible = false
-			elseif name == "Player" then
-				ListOfTpPlayer.Visible = false
-			elseif name == "Event" then
-				ListOfTPEvent.Visible = false
-			end
-		end
-	end
+	--		isOpen[name] = true
+	--		if name == "Island" then
+	--			ListOfTPIsland.Visible = true
+	--		elseif name == "Player" then
+	--			ListOfTpPlayer.Visible = true
+	--		elseif name == "Event" then
+	--			ListOfTPEvent.Visible = true
+	--		end
+	--	else
+	--		-- Kalau sudah buka, langsung tutup
+	--		isOpen[name] = false
+	--		if name == "Island" then
+	--			ListOfTPIsland.Visible = false
+	--		elseif name == "Player" then
+	--			ListOfTpPlayer.Visible = false
+	--		elseif name == "Event" then
+	--			ListOfTPEvent.Visible = false
+	--		end
+	--	end
+	--end
 
-
-	--local yPos = 0.1
-	--local padding = 0.02
-
-	for _, island in ipairs(tpFolder:GetChildren()) do
-		if island:IsA("BasePart") then
-			local btn = Instance.new("TextButton")
-			btn.Name = island.Name
-			btn.Size = UDim2.new(1, 0, 0.1, 0)
-			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
-			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-			btn.Text = island.Name
-			btn.TextScaled = true
-			btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-			btn.Font = Enum.Font.GothamBold
-			btn.Parent = ListOfTPIsland
+	--for _, island in ipairs(tpFolder:GetChildren()) do
+	--	if island:IsA("BasePart") then
+	--		local btn = Instance.new("TextButton")
+	--		btn.Name = island.Name
+	--		btn.Size = UDim2.new(1, 0, 0.1, 0)
+	--		btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
+	--		btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	--		btn.Text = island.Name
+	--		btn.TextScaled = true
+	--		btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+	--		btn.Font = Enum.Font.GothamBold
+	--		btn.Parent = ListOfTPIsland
 			
-			btn.MouseButton1Click:Connect(function()
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = island.CFrame
-			end)
-			index += 1
-		end
-	end
+	--		btn.MouseButton1Click:Connect(function()
+	--			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = island.CFrame
+	--		end)
+	--		index += 1
+	--	end
+	--end
 	
-	index = 0
+	--index = 0
 	
-	for _, player in ipairs(charFolder:GetChildren()) do
-		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
-			print("Halo")
-			local btn = Instance.new("TextButton")
-			btn.Name = player.Name
-			btn.Parent = ListOfTpPlayer
-			btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-			btn.Text = player.Name
-			btn.Size = UDim2.new(1, 0, 0.1, 0)
-			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
+	--for _, player in ipairs(charFolder:GetChildren()) do
+	--	if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
+	--		print("Halo")
+	--		local btn = Instance.new("TextButton")
+	--		btn.Name = player.Name
+	--		btn.Parent = ListOfTpPlayer
+	--		btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+	--		btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	--		btn.Text = player.Name
+	--		btn.Size = UDim2.new(1, 0, 0.1, 0)
+	--		btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
 			
-			btn.MouseButton1Click:Connect(function()
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.HumanoidRootPart.CFrame
-			end)
-			index += 1
-		end
-	end
+	--		btn.MouseButton1Click:Connect(function()
+	--			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.HumanoidRootPart.CFrame
+	--		end)
+	--		index += 1
+	--	end
+	--end
 	
 
-	local pages = {
-		Main = MainFrame,
-		Player = PlayerFrame,
-		Teleport = Teleport,
-		Boat = SpawnBoatFrame,
-	}
+	--local pages = {
+	--	Main = MainFrame,
+	--	Player = PlayerFrame,
+	--	Teleport = Teleport,
+	--	Boat = SpawnBoatFrame,
+	--}
 
-	local autoFishThread = nil
+	--local autoFishThread = nil
 
-	function toggleFishing(state)
-		if state == true then
-			_G.AutoFishing = true
+	--function toggleFishing(state)
+	--	if state == true then
+	--		_G.AutoFishing = true
 
-			-- Spawn thread AutoFishing
-			autoFishThread = task.spawn(function()
-				while _G.AutoFishing do
-					pcall(function()
-						-- Pastikan equip rod dulu
-						local char = character or character:Wait()
-						local equippedTool = char:FindFirstChild("!!!EQUIPPED_TOOL!!!")
+	--		-- Spawn thread AutoFishing
+	--		autoFishThread = task.spawn(function()
+	--			while _G.AutoFishing do
+	--				pcall(function()
+	--					-- Pastikan equip rod dulu
+	--					local char = character or character:Wait()
+	--					local equippedTool = char:FindFirstChild("!!!EQUIPPED_TOOL!!!")
 
-						if not equippedTool then
-							-- Reset state dulu biar server mau accept equip baru
-							CancelFishing:InvokeServer()
-							EquipRod:FireServer(1)
-						end
+	--					if not equippedTool then
+	--						-- Reset state dulu biar server mau accept equip baru
+	--						CancelFishing:InvokeServer()
+	--						EquipRod:FireServer(1)
+	--					end
 
-						-- Lanjut proses memancing
-						ChargeRod:InvokeServer(workspace:GetServerTimeNow())
-						RequestFishing:InvokeServer(-1.2379989624023438, 0.9800224985802423)
-						task.wait(0.4)
-						FishingComplete:FireServer()
-					end)
-				end
-			end)
+	--					-- Lanjut proses memancing
+	--					ChargeRod:InvokeServer(workspace:GetServerTimeNow())
+	--					RequestFishing:InvokeServer(-1.2379989624023438, 0.9800224985802423)
+	--					task.wait(0.4)
+	--					FishingComplete:FireServer()
+	--				end)
+	--			end
+	--		end)
 
-		else
-			_G.AutoFishing = false
+	--	else
+	--		_G.AutoFishing = false
 
-			pcall(function()
-				CancelFishing:InvokeServer()
-				UnEquipRod:FireServer() -- ✅ pake remote yang benar sekarang
-			end)
-		end
-	end
+	--		pcall(function()
+	--			CancelFishing:InvokeServer()
+	--			UnEquipRod:FireServer() -- ✅ pake remote yang benar sekarang
+	--		end)
+	--	end
+	--end
 
-	function showPanel(pageName)
-		for _, panel in pairs(pages) do
-			panel.Visible = false
-		end
+	--function showPanel(pageName)
+	--	for _, panel in pairs(pages) do
+	--		panel.Visible = false
+	--	end
 
-		-- Tampilkan panel yang dipilih
-		local selectedPanel = pages[pageName]
-		if selectedPanel then
-			selectedPanel.Visible = true
+	--	-- Tampilkan panel yang dipilih
+	--	local selectedPanel = pages[pageName]
+	--	if selectedPanel then
+	--		selectedPanel.Visible = true
 
-			-- Ganti judulnya
-			Tittle.Text = pageName
-		end
-	end
+	--		-- Ganti judulnya
+	--		Tittle.Text = pageName
+	--	end
+	--end
 
 	-- Button Functional
 
 	AutoFishButton.MouseButton1Click:Connect(function()
 		if _G.AutoFishing then
-			toggleFishing(false)
+			--toggleFishing(false)
 			AutoFishButton.Text = "OFF"
 		else
-			toggleFishing(true)
+			--toggleFishing(true)
 			AutoFishButton.Text = "ON"
 		end
 	end)
@@ -1824,19 +1820,19 @@
 	end)
 
 	MAIN.MouseButton1Click:Connect(function()
-		showPanel("Main")
+		--showPanel("Main")
 	end)
 
 	Player.MouseButton1Click:Connect(function()
-		showPanel("Player")
+		--showPanel("Player")
 	end)
 
 	TELEPORT.MouseButton1Click:Connect(function()
-		showPanel("Teleport")
+		--showPanel("Teleport")
 	end)
 
 	SpawnBoat.MouseButton1Click:Connect(function()
-		showPanel("Boat")
+		--showPanel("Boat")
 	end)
 
 
@@ -1851,15 +1847,14 @@
 	end)
 	
 	TPIslandButton.MouseButton1Click:Connect(function()
-		ToggleList("Island")
+		--ToggleList("Island")
 	end)
 	TPPlayerButton.MouseButton1Click:Connect(function()
-		ToggleList("Player")
-		print("Membuka Player List Baru")
+		--ToggleList("Player")
 	end)
 
 	SellAllButton.MouseButton1Click:Connect(function()
 		sellAll:InvokeServer()
 	end)
 
-	showPanel("Main")
+	--showPanel("Main")
