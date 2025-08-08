@@ -1752,7 +1752,7 @@ function showPanel(pageName)
 		selectedPanel.Visible = true
 
 		-- Ganti judulnya
-		TittleSideBar.Text = pageName
+		Tittle.Text = pageName
 	end
 end
 
