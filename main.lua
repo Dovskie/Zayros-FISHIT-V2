@@ -1626,7 +1626,7 @@
 	local FishingRadar = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/UpdateFishingRadar"]
 	local tpFolder = workspace["!!!! ISLAND LOCATIONS !!!!"]
 
-	local index = 0
+	--local index = 0
 	--local isAlreadySpawned
 
 
@@ -1680,8 +1680,8 @@
 --end
 
 
-	local yPos = 0.1
-	local padding = 0.02
+	--local yPos = 0.1
+	--local padding = 0.02
 
 	--for _, island in ipairs(tpFolder:GetChildren()) do
 	--	if island:IsA("BasePart") then
