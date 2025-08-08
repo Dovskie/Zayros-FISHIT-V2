@@ -1689,7 +1689,7 @@ for _, island in ipairs(tpFolder:GetChildren()) do
 		btn.Parent = ListOfTPIsland
 		
 		btn.MouseButton1Click:Connect(function()
-			game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(island.CFrame)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(island.CFrame)
 		end)
 		index += 1
 	end
