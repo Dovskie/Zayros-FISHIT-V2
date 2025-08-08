@@ -988,6 +988,7 @@
 	ListOfTPEvent.Position = UDim2.new(0.590924203, 0, 0.317240119, 0)
 	ListOfTPEvent.Size = UDim2.new(0, 100, 0, 143)
 	ListOfTPEvent.Visible = false
+	ListOfTPEvent.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
 	ListOfTpPlayer.Name = "ListOfTpPlayer"
 	ListOfTpPlayer.Parent = Teleport
@@ -999,6 +1000,7 @@
 	ListOfTpPlayer.Position = UDim2.new(0.584594965, 0, 0.495981604, 0)
 	ListOfTpPlayer.Size = UDim2.new(0, 100, 0, 143)
 	ListOfTpPlayer.Visible = false
+	ListOfTpPlayer.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
 	SpawnBoatFrame.Name = "SpawnBoatFrame"
 	SpawnBoatFrame.Parent = FrameUtama
@@ -1628,7 +1630,8 @@
 	local tpFolder = workspace["!!!! ISLAND LOCATIONS !!!!"]
 	local charFolder = workspace.Characters
 
-	local index = 0
+	local indexIsland = 0
+	local indexPlayer = 0
 	--local isAlreadySpawned
 
 
@@ -1723,7 +1726,7 @@
 			local btn = Instance.new("TextButton")
 			btn.Name = island.Name
 			btn.Size = UDim2.new(1, 0, 0.1, 0)
-			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
+			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * indexIsland, 0)
 			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 			btn.Text = island.Name
 			btn.TextScaled = true
@@ -1734,17 +1737,18 @@
 			btn.MouseButton1Click:Connect(function()
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = island.CFrame
 			end)
-			index += 1
+			indexIsland += 1
 		end
 	end
 	
 	for _, player in ipairs(charFolder:GetChildren()) do
-		print(player)
+		
 		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
+			print(player)
 			local btn = Instance.new("TextButton")
 			btn.Name = player.Name
 			btn.Size = UDim2.new(1, 0, 0.1, 0)
-			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
+			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * indexPlayer, 0)
 			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 			btn.Text = player.Name
 			btn.TextScaled = true
@@ -1759,6 +1763,7 @@
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = char.CFrame
 				end
 			end)
+			indexPlayer += 1
 		end
 	end
 	
