@@ -1923,8 +1923,11 @@ local sellAll =  Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/SellAllItems"
 	end)
 	
 	UnlimitedJumpButton.MouseButton1Click:Connect(function()
-		infiniteJumpEnabled = not infiniteJumpEnabled
-		toggleInfiniteJump(infiniteJumpEnabled)
+		if infiniteJumpEnabled then
+			toggleInfiniteJump(false)
+		else
+			toggleInfiniteJump(true)
+		end
 	end)
 
 
