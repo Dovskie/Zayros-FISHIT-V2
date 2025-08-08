@@ -1687,7 +1687,6 @@
 				ListOfTPEvent.Visible = true
 			end
 		else
-			-- Kalau sudah buka, langsung tutup
 			isOpen[name] = false
 			if name == "Island" then
 				ListOfTPIsland.Visible = false
@@ -1723,7 +1722,6 @@
 	
 	for _, player in ipairs(charFolder:GetChildren()) do
 		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
-			print("Halo")
 			local btn = Instance.new("TextButton")
 			btn.Name = player.Name
 			btn.Parent = ListOfTpPlayer
@@ -1748,56 +1746,50 @@
 		Boat = SpawnBoatFrame,
 	}
 
-	--local autoFishThread = nil
+	local autoFishThread = nil
 
-	--function toggleFishing(state)
-	--	if state == true then
-	--		_G.AutoFishing = true
+	function toggleFishing(state)
+		if state == true then
+			_G.AutoFishing = true
 
-	--		-- Spawn thread AutoFishing
-	--		autoFishThread = task.spawn(function()
-	--			while _G.AutoFishing do
-	--				pcall(function()
-	--					-- Pastikan equip rod dulu
-	--					local char = character or character:Wait()
-	--					local equippedTool = char:FindFirstChild("!!!EQUIPPED_TOOL!!!")
+			autoFishThread = task.spawn(function()
+				while _G.AutoFishing do
+					pcall(function()
+						local char = character or character:Wait()
+						local equippedTool = char:FindFirstChild("!!!EQUIPPED_TOOL!!!")
 
-	--					if not equippedTool then
-	--						-- Reset state dulu biar server mau accept equip baru
-	--						CancelFishing:InvokeServer()
-	--						EquipRod:FireServer(1)
-	--					end
+						if not equippedTool then
+							CancelFishing:InvokeServer()
+							EquipRod:FireServer(1)
+						end
 
-	--					-- Lanjut proses memancing
-	--					ChargeRod:InvokeServer(workspace:GetServerTimeNow())
-	--					RequestFishing:InvokeServer(-1.2379989624023438, 0.9800224985802423)
-	--					task.wait(0.4)
-	--					FishingComplete:FireServer()
-	--				end)
-	--			end
-	--		end)
+						ChargeRod:InvokeServer(workspace:GetServerTimeNow())
+						RequestFishing:InvokeServer(-1.2379989624023438, 0.9800224985802423)
+						task.wait(0.4)
+						FishingComplete:FireServer()
+					end)
+				end
+			end)
 
-	--	else
-	--		_G.AutoFishing = false
+		else
+			_G.AutoFishing = false
 
-	--		pcall(function()
-	--			CancelFishing:InvokeServer()
-	--			UnEquipRod:FireServer() -- ✅ pake remote yang benar sekarang
-	--		end)
-	--	end
-	--end
+			pcall(function()
+				CancelFishing:InvokeServer()
+				UnEquipRod:FireServer()
+			end)
+		end
+	end
 
 	function showPanel(pageName)
 		for _, panel in pairs(pages) do
 			panel.Visible = false
 		end
 
-		-- Tampilkan panel yang dipilih
 		local selectedPanel = pages[pageName]
 		if selectedPanel then
 			selectedPanel.Visible = true
 
-			-- Ganti judulnya
 			Tittle.Text = pageName
 		end
 	end
@@ -1806,10 +1798,10 @@
 
 	AutoFishButton.MouseButton1Click:Connect(function()
 		if _G.AutoFishing then
-			--toggleFishing(false)
+			toggleFishing(false)
 			AutoFishButton.Text = "OFF"
 		else
-			--toggleFishing(true)
+			toggleFishing(true)
 			AutoFishButton.Text = "ON"
 		end
 	end)
