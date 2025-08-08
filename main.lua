@@ -1632,7 +1632,7 @@
 	local UIS = game:GetService("UserInputService")
 	local charFolder = workspace.Characters
 
-	--local index = 0
+	local index = 0
 
 	--_G.AutoFishing = false
 	--_G.OxygenBypass = false
@@ -1699,46 +1699,46 @@
 	--	end
 	--end
 
-	--for _, island in ipairs(tpFolder:GetChildren()) do
-	--	if island:IsA("BasePart") then
-	--		local btn = Instance.new("TextButton")
-	--		btn.Name = island.Name
-	--		btn.Size = UDim2.new(1, 0, 0.1, 0)
-	--		btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
-	--		btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	--		btn.Text = island.Name
-	--		btn.TextScaled = true
-	--		btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-	--		btn.Font = Enum.Font.GothamBold
-	--		btn.Parent = ListOfTPIsland
+	for _, island in ipairs(tpFolder:GetChildren()) do
+		if island:IsA("BasePart") then
+			local btn = Instance.new("TextButton")
+			btn.Name = island.Name
+			btn.Size = UDim2.new(1, 0, 0.1, 0)
+			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
+			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			btn.Text = island.Name
+			btn.TextScaled = true
+			btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+			btn.Font = Enum.Font.GothamBold
+			btn.Parent = ListOfTPIsland
 			
-	--		btn.MouseButton1Click:Connect(function()
-	--			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = island.CFrame
-	--		end)
-	--		index += 1
-	--	end
-	--end
+			btn.MouseButton1Click:Connect(function()
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = island.CFrame
+			end)
+			index += 1
+		end
+	end
 	
-	--index = 0
+	index = 0
 	
-	--for _, player in ipairs(charFolder:GetChildren()) do
-	--	if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
-	--		print("Halo")
-	--		local btn = Instance.new("TextButton")
-	--		btn.Name = player.Name
-	--		btn.Parent = ListOfTpPlayer
-	--		btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-	--		btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	--		btn.Text = player.Name
-	--		btn.Size = UDim2.new(1, 0, 0.1, 0)
-	--		btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
+	for _, player in ipairs(charFolder:GetChildren()) do
+		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
+			print("Halo")
+			local btn = Instance.new("TextButton")
+			btn.Name = player.Name
+			btn.Parent = ListOfTpPlayer
+			btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			btn.Text = player.Name
+			btn.Size = UDim2.new(1, 0, 0.1, 0)
+			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
 			
-	--		btn.MouseButton1Click:Connect(function()
-	--			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.HumanoidRootPart.CFrame
-	--		end)
-	--		index += 1
-	--	end
-	--end
+			btn.MouseButton1Click:Connect(function()
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.HumanoidRootPart.CFrame
+			end)
+			index += 1
+		end
+	end
 	
 
 	local pages = {
