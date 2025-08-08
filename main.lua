@@ -1697,7 +1697,7 @@
 			btn.Parent = ListOfTPIsland
 			
 			btn.MouseButton1Click:Connect(function()
-				
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = island.CFrame
 			end)
 			index += 1
 		end
