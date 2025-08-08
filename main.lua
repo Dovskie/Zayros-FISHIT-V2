@@ -1739,6 +1739,7 @@
 	end
 	
 	for _, player in ipairs(charFolder:GetChildren()) do
+		print(player)
 		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
 			local btn = Instance.new("TextButton")
 			btn.Name = player.Name
