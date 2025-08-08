@@ -1658,46 +1658,46 @@
 	--end)
 
 
-	--local isOpen = {
-	--	Island = false,
-	--	Player = false,
-	--	Event = false,
-	--}
+	local isOpen = {
+		Island = false,
+		Player = false,
+		Event = false,
+	}
 	
-	--local function CloseAll()
-	--	isOpen.Island = false
-	--	isOpen.Player = false
-	--	isOpen.Event = false
+	local function CloseAll()
+		isOpen.Island = false
+		isOpen.Player = false
+		isOpen.Event = false
 		
-	--	ListOfTPIsland.Visible = false
-	--	ListOfTpPlayer.Visible = false
-	--	ListOfTPEvent.Visible = false
-	--end
+		ListOfTPIsland.Visible = false
+		ListOfTpPlayer.Visible = false
+		ListOfTPEvent.Visible = false
+	end
 	
-	--local function ToggleList(name)
-	--	if not isOpen[name] then
-	--		CloseAll()
+	local function ToggleList(name)
+		if not isOpen[name] then
+			CloseAll()
 			
-	--		isOpen[name] = true
-	--		if name == "Island" then
-	--			ListOfTPIsland.Visible = true
-	--		elseif name == "Player" then
-	--			ListOfTpPlayer.Visible = true
-	--		elseif name == "Event" then
-	--			ListOfTPEvent.Visible = true
-	--		end
-	--	else
-	--		-- Kalau sudah buka, langsung tutup
-	--		isOpen[name] = false
-	--		if name == "Island" then
-	--			ListOfTPIsland.Visible = false
-	--		elseif name == "Player" then
-	--			ListOfTpPlayer.Visible = false
-	--		elseif name == "Event" then
-	--			ListOfTPEvent.Visible = false
-	--		end
-	--	end
-	--end
+			isOpen[name] = true
+			if name == "Island" then
+				ListOfTPIsland.Visible = true
+			elseif name == "Player" then
+				ListOfTpPlayer.Visible = true
+			elseif name == "Event" then
+				ListOfTPEvent.Visible = true
+			end
+		else
+			-- Kalau sudah buka, langsung tutup
+			isOpen[name] = false
+			if name == "Island" then
+				ListOfTPIsland.Visible = false
+			elseif name == "Player" then
+				ListOfTpPlayer.Visible = false
+			elseif name == "Event" then
+				ListOfTPEvent.Visible = false
+			end
+		end
+	end
 
 	for _, island in ipairs(tpFolder:GetChildren()) do
 		if island:IsA("BasePart") then
