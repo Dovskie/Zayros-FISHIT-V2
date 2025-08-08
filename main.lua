@@ -1628,14 +1628,13 @@
 	local despawnBoat = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/DespawnBoat"]
 	local FishingRadar = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/UpdateFishingRadar"]
 	local tpFolder = workspace["!!!! ISLAND LOCATIONS !!!!"]
-local sellAll =  Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/SellAllItems"]
+	local sellAll =  Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/SellAllItems"]
+	local UIS = game:GetService("UserInputService")
 
 
 	local charFolder = workspace.Characters
 
 	local index = 0
-	local jumpConn = nil
-	local infiniteJumpEnabled = false
 	
 	--local isAlreadySpawned
 
@@ -1815,41 +1814,11 @@ local sellAll =  Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/SellAllItems"
 		end
 	end
 	
-
-
-	game.Players.LocalPlayer.CharacterAdded:Connect(function(char)
-		humanoid = char:WaitForChild("Humanoid")
-		if infiniteJumpEnabled then
-			enableInfiniteJump()
+	UIS.JumpRequest:Connect(function()
+		if _G.UnlimitedJump then
+			local humanoid = game.Players.LocalPlayer.Character.Humanoid
 		end
 	end)
-
-	function enableInfiniteJump()
-		if jumpConn then return end -- sudah aktif, jangan double connect
-		jumpConn = humanoid.Jumping:Connect(function(active)
-			if active then
-				humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
-				humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall, true)
-			end
-		end)
-		infiniteJumpEnabled = true
-	end
-
-	function disableInfiniteJump()
-		if jumpConn then
-			jumpConn:Disconnect()
-			jumpConn = nil
-		end
-		infiniteJumpEnabled = false
-	end
-
-	function toggleInfiniteJump(state)
-		if state then
-			enableInfiniteJump()
-		else
-			disableInfiniteJump()
-		end
-	end
 
 	function showPanel(pageName)
 		for _, panel in pairs(pages) do
@@ -1923,11 +1892,7 @@ local sellAll =  Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/SellAllItems"
 	end)
 	
 	UnlimitedJumpButton.MouseButton1Click:Connect(function()
-		if infiniteJumpEnabled then
-			toggleInfiniteJump(false)
-		else
-			toggleInfiniteJump(true)
-		end
+		_G.UnlimitedJump = not _G.UnlimitedJump
 	end)
 
 
