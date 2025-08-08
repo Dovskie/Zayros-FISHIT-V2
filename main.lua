@@ -918,6 +918,7 @@
 	ListOfTPIsland.Size = UDim2.new(0, 100, 0, 143)
 	ListOfTPIsland.ZIndex = 3
 	ListOfTPIsland.Visible = false
+	ListOfTPIsland.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
 	TPPlayer.Name = "TPPlayer"
 	TPPlayer.Parent = Teleport
@@ -1625,6 +1626,7 @@
 	local despawnBoat = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/DespawnBoat"]
 	local FishingRadar = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/UpdateFishingRadar"]
 	local tpFolder = workspace["!!!! ISLAND LOCATIONS !!!!"]
+	local charFolder = workspace.Characters
 
 	local index = 0
 	--local isAlreadySpawned
@@ -1671,13 +1673,46 @@
 	end)
 
 
---if ListOfTPIsland then
---	for _, child in ipairs(ListOfTPIsland:GetChildren()) do
---		child:Destroy()
---	end
---else
---	warn("listBoat nil, tidak bisa hapus anak")
---end
+	local isOpen = {
+		Island = false,
+		Player = false,
+		Event = false,
+	}
+	
+	local function CloseAll()
+		isOpen.Island = false,
+		isOpen.Player = false,
+		isOpen.Event = false,
+		
+		ListOfTPIsland.Visible = false,
+		ListOfTpPlayer.Visible = false,
+		ListOfTPEvent.Visible = false
+	end
+	
+	local function ToggleList(name)
+		if not isOpen[name] then
+			CloseAll()
+			
+			isOpen[name] = true
+			if name == "Island" then
+				ListOfTPIsland.Visible = true
+			elseif name == "Player" then
+				ListOfTpPlayer.Visible = true
+			elseif name == "Event" then
+				ListOfTPEvent.Visible = true
+			end
+		else
+			-- Kalau sudah buka, langsung tutup
+			isOpen[name] = false
+			if name == "Island" then
+				ListOfTPIsland.Visible = false
+			elseif name == "Player" then
+				ListOfTpPlayer.Visible = false
+			elseif name == "Event" then
+				ListOfTPEvent.Visible = false
+			end
+		end
+	end
 
 
 	--local yPos = 0.1
@@ -1702,6 +1737,30 @@
 			index += 1
 		end
 	end
+	
+	for _, player in ipairs(charFolder:GetChildren()) do
+		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
+			local btn = Instance.new("TextButton")
+			btn.Name = player.Name
+			btn.Size = UDim2.new(1, 0, 0.1, 0)
+			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
+			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			btn.Text = player.Name
+			btn.TextScaled = true
+			btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+			btn.Font = Enum.Font.GothamBold
+			btn.Parent = ListOfTpPlayer
+			
+			btn.MouseButton1Click:Connect(function()
+				local char = player:FindFirstChild("HumanoidRootPart")
+				if char then
+					character = char
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = char.CFrame
+				end
+			end)
+		end
+	end
+	
 
 	local pages = {
 		Main = MainFrame,
@@ -1810,11 +1869,13 @@
 	end)
 	
 TPIslandButton.MouseButton1Click:Connect(function()
-	ListOfTPIsland.Visible = true
-	print(tpFolder)  -- harusnya bukan nil
-	print(ListOfTPIsland) -- harusnya bukan nil
-	print(#tpFolder:GetChildren()) -- apakah ada isi?
-	print(#ListOfTPIsland:GetChildren()) -- ini harusnya 0 saat baru dibuat
+	ToggleList("Island")
+end)
+TPPlayerButton.MouseButton1Click:Connect(function()
+	ToggleList("Player")
+end)
+TPEventButton.MouseButton1Click:Connect(function()
+	ToggleList("Event")
 end)
 
 
