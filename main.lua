@@ -1787,20 +1787,20 @@
 	--	end
 	--end
 
-	--function showPanel(pageName)
-	--	for _, panel in pairs(pages) do
-	--		panel.Visible = false
-	--	end
+	function showPanel(pageName)
+		for _, panel in pairs(pages) do
+			panel.Visible = false
+		end
 
-	--	-- Tampilkan panel yang dipilih
-	--	local selectedPanel = pages[pageName]
-	--	if selectedPanel then
-	--		selectedPanel.Visible = true
+		-- Tampilkan panel yang dipilih
+		local selectedPanel = pages[pageName]
+		if selectedPanel then
+			selectedPanel.Visible = true
 
-	--		-- Ganti judulnya
-	--		Tittle.Text = pageName
-	--	end
-	--end
+			-- Ganti judulnya
+			Tittle.Text = pageName
+		end
+	end
 
 	-- Button Functional
 
@@ -1820,19 +1820,19 @@
 	end)
 
 	MAIN.MouseButton1Click:Connect(function()
-		--showPanel("Main")
+		showPanel("Main")
 	end)
 
 	Player.MouseButton1Click:Connect(function()
-		--showPanel("Player")
+		showPanel("Player")
 	end)
 
 	TELEPORT.MouseButton1Click:Connect(function()
-		--showPanel("Teleport")
+		showPanel("Teleport")
 	end)
 
 	SpawnBoat.MouseButton1Click:Connect(function()
-		--showPanel("Boat")
+		showPanel("Boat")
 	end)
 
 
@@ -1857,4 +1857,4 @@
 		sellAll:InvokeServer()
 	end)
 
-	--showPanel("Main")
+	showPanel("Main")
