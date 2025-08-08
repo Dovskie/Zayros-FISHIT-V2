@@ -1628,9 +1628,14 @@
 	local despawnBoat = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/DespawnBoat"]
 	local FishingRadar = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/UpdateFishingRadar"]
 	local tpFolder = workspace["!!!! ISLAND LOCATIONS !!!!"]
+local sellAll =  Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/SellAllItems"]
+
+
 	local charFolder = workspace.Characters
 
 	local index = 0
+	local jumpConn = nil
+	local infiniteJumpEnabled = false
 	
 	--local isAlreadySpawned
 
@@ -1650,10 +1655,11 @@
 	--		)
 	--	end
 	--end
-
+	
 
 	_G.AutoFishing = false
 	_G.OxygenBypass = false
+	_G.UnlimitedJump = false
 
 	local mt = getrawmetatable(game)
 	setreadonly(mt, false)
@@ -1808,7 +1814,42 @@
 			end)
 		end
 	end
+	
 
+
+	game.Players.LocalPlayer.CharacterAdded:Connect(function(char)
+		humanoid = char:WaitForChild("Humanoid")
+		if infiniteJumpEnabled then
+			enableInfiniteJump()
+		end
+	end)
+
+	function enableInfiniteJump()
+		if jumpConn then return end -- sudah aktif, jangan double connect
+		jumpConn = humanoid.Jumping:Connect(function(active)
+			if active then
+				humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
+				humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall, true)
+			end
+		end)
+		infiniteJumpEnabled = true
+	end
+
+	function disableInfiniteJump()
+		if jumpConn then
+			jumpConn:Disconnect()
+			jumpConn = nil
+		end
+		infiniteJumpEnabled = false
+	end
+
+	function toggleInfiniteJump(state)
+		if state then
+			enableInfiniteJump()
+		else
+			disableInfiniteJump()
+		end
+	end
 
 	function showPanel(pageName)
 		for _, panel in pairs(pages) do
@@ -1869,13 +1910,22 @@
 		end
 	end)
 	
-TPIslandButton.MouseButton1Click:Connect(function()
-	ToggleList("Island")
-end)
-TPPlayerButton.MouseButton1Click:Connect(function()
-	ToggleList("Player")
-	print("Membuka Player List Baru")
-end)
+	TPIslandButton.MouseButton1Click:Connect(function()
+		ToggleList("Island")
+	end)
+	TPPlayerButton.MouseButton1Click:Connect(function()
+		ToggleList("Player")
+		print("Membuka Player List Baru")
+	end)
+
+	SellAllButton.MouseButton1Click:Connect(function()
+		sellAll:InvokeServer()
+	end)
+	
+	UnlimitedJumpButton.MouseButton1Click:Connect(function()
+		infiniteJumpEnabled = not infiniteJumpEnabled
+		toggleInfiniteJump(infiniteJumpEnabled)
+	end)
 
 
 
