@@ -1779,7 +1779,7 @@ Player.MouseButton1Click:Connect(function()
 end)
 
 TELEPORT.MouseButton1Click:Connect(function()
-	showPanel("TPEvent")
+	showPanel("Teleport")
 end)
 
 SpawnBoat.MouseButton1Click:Connect(function()
