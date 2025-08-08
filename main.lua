@@ -1694,7 +1694,8 @@ local padding = 0.02
 local pages = {
 	Main = MainFrame,
 	Player = PlayerFrame,
-	Teleport = Teleport
+	Teleport = Teleport,
+	Boat = SpawnBoatFrame,
 }
 
 local autoFishThread = nil
@@ -1781,6 +1782,9 @@ TELEPORT.MouseButton1Click:Connect(function()
 	showPanel("TPEvent")
 end)
 
+SpawnBoat.MouseButton1Click:Connect(function()
+	showPanel("Boat")
+end)
 
 
 NoOxygenButton.MouseButton1Click:Connect(function()
