@@ -1847,10 +1847,10 @@
 	end)
 	
 	TPIslandButton.MouseButton1Click:Connect(function()
-		--ToggleList("Island")
+		ToggleList("Island")
 	end)
 	TPPlayerButton.MouseButton1Click:Connect(function()
-		--ToggleList("Player")
+		ToggleList("Player")
 	end)
 
 	SellAllButton.MouseButton1Click:Connect(function()
