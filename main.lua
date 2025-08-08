@@ -1622,25 +1622,25 @@ local despawnBoat = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/DespawnBoa
 local FishingRadar = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/UpdateFishingRadar"]
 local tpFolder = workspace["!!!! ISLAND LOCATIONS !!!!"]
 
-local index = 0
-local isAlreadySpawned
+--local index = 0
+--local isAlreadySpawned
 
 
-function checkerSpawnedBoat(state, boatID)
-	if state == false then
-		isAlreadySpawned = false
-		SpawnBoat:InvokeServer(
-			boatID
-		)
-		isAlreadySpawned = true
-	elseif state == true then
-		isAlreadySpawned = true
-		despawnBoat:InvokeServer()
-		SpawnBoat:InvokeServer(
-			boatID
-		)
-	end
-end
+--function checkerSpawnedBoat(state, boatID)
+--	if state == false then
+--		isAlreadySpawned = false
+--		SpawnBoat:InvokeServer(
+--			boatID
+--		)
+--		isAlreadySpawned = true
+--	elseif state == true then
+--		isAlreadySpawned = true
+--		despawnBoat:InvokeServer()
+--		SpawnBoat:InvokeServer(
+--			boatID
+--		)
+--	end
+--end
 
 
 _G.AutoFishing = false
@@ -1781,8 +1781,6 @@ TELEPORT.MouseButton1Click:Connect(function()
 	showPanel("TPEvent")
 end)
 
-
-
 NoOxygenButton.MouseButton1Click:Connect(function()
 	_G.OxygenBypass = not _G.OxygenBypass
 
@@ -1792,8 +1790,6 @@ NoOxygenButton.MouseButton1Click:Connect(function()
 		NoOxygenButton.Text = "OFF"
 	end
 end)
-
-
 
 SetWalkSpeedButton.MouseButton1Click:Connect(function()
 	local input = WalkSpeedTextBox.Text
