@@ -1011,6 +1011,7 @@ SpawnBoatFrame.Size = UDim2.new(0.623949468, 0, 0.852507353, 0)
 SpawnBoatFrame.Visible = false
 SpawnBoatFrame.ZIndex = 2
 SpawnBoatFrame.ScrollBarThickness = 6
+SpawnBoatFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
 ListLayoutBoatFrame.Name = "ListLayoutBoatFrame"
 ListLayoutBoatFrame.Parent = SpawnBoatFrame
