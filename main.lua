@@ -1831,7 +1831,7 @@ NoOxygenButton.MouseButton1Click:Connect(function()
 	_G.OxygenBypass = not _G.OxygenBypass
 
 	if _G.OxygenBypass then
-		print("Hi")
+		print("wsg")
 		NoOxygenButton.Text = "ON"
 	else
 		NoOxygenButton.Text = "OFF"
