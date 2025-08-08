@@ -917,6 +917,7 @@ ListOfTPIsland.BorderSizePixel = 0
 ListOfTPIsland.Position = UDim2.new(0.590924203, 0, 0.147147402, 0)
 ListOfTPIsland.Size = UDim2.new(0, 100, 0, 143)
 ListOfTPIsland.ZIndex = 3
+ListOfTPIsland.Visible = false
 
 TPPlayer.Name = "TPPlayer"
 TPPlayer.Parent = Teleport
@@ -985,6 +986,7 @@ ListOfTPEvent.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ListOfTPEvent.BorderSizePixel = 0
 ListOfTPEvent.Position = UDim2.new(0.590924203, 0, 0.317240119, 0)
 ListOfTPEvent.Size = UDim2.new(0, 100, 0, 143)
+ListOfTPEvent.Visible = false
 
 ListOfTpPlayer.Name = "ListOfTpPlayer"
 ListOfTpPlayer.Parent = Teleport
@@ -995,6 +997,7 @@ ListOfTpPlayer.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ListOfTpPlayer.BorderSizePixel = 0
 ListOfTpPlayer.Position = UDim2.new(0.584594965, 0, 0.495981604, 0)
 ListOfTpPlayer.Size = UDim2.new(0, 100, 0, 143)
+ListOfTpPlayer.Visible = false
 
 SpawnBoatFrame.Name = "SpawnBoatFrame"
 SpawnBoatFrame.Parent = FrameUtama
