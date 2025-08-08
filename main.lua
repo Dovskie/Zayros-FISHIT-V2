@@ -1723,12 +1723,11 @@
 	end
 	
 	for _, player in ipairs(charFolder:GetChildren()) do
-		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer.Name then
-			print("Button kebuat sebanyak " .. #charFolder)
+		if player:IsA("Model") then
 			local btn = Instance.new("TextButton")
 			btn.Name = player.Name
 			btn.Size = UDim2.new(1, 0, 0.1, 0)
-			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * indexPlayer, 0)
+			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * indexIsland, 0)
 			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 			btn.Text = player.Name
 			btn.TextScaled = true
