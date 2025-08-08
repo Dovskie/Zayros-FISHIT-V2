@@ -1630,8 +1630,8 @@
 	local tpFolder = workspace["!!!! ISLAND LOCATIONS !!!!"]
 	local charFolder = workspace.Characters
 
-	local indexIsland = 0
-	local indexPlayer = 0
+	local index = 0
+	
 	--local isAlreadySpawned
 
 
@@ -1726,7 +1726,7 @@
 			local btn = Instance.new("TextButton")
 			btn.Name = island.Name
 			btn.Size = UDim2.new(1, 0, 0.1, 0)
-			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * indexIsland, 0)
+			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
 			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 			btn.Text = island.Name
 			btn.TextScaled = true
@@ -1737,9 +1737,11 @@
 			btn.MouseButton1Click:Connect(function()
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = island.CFrame
 			end)
-			indexIsland += 1
+			index += 1
 		end
 	end
+	
+	index = 0
 	
 	for _, player in ipairs(charFolder:GetChildren()) do
 		if player:IsA("Model") and player.Name ~= game.Players.LocalPlayer then
@@ -1751,12 +1753,12 @@
 			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 			btn.Text = player.Name
 			btn.Size = UDim2.new(1, 0, 0.1, 0)
-			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * indexPlayer, 0)
+			btn.Position = UDim2.new(0, 0, (0.1 + 0.02) * index, 0)
 			
 			btn.MouseButton1Click:Connect(function()
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.HumanoidRootPart.CFrame
 			end)
-			indexPlayer += 1
+			index += 1
 		end
 	end
 	
