@@ -1671,7 +1671,7 @@
 	end)
 
 
-	ListOfTPIsland:ClearAllChildren()
+	--ListOfTPIsland:ClearAllChildren()
 
 	--local yPos = 0.1
 	--local padding = 0.02
