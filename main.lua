@@ -1676,24 +1676,24 @@
 	--local yPos = 0.1
 	--local padding = 0.02
 
-	--for _, island in ipairs(tpFolder:GetChildren()) do
-	--	if island:IsA("BasePart") then
-	--		local btn = Instance.new("TextButton")
-	--		btn.Size = UDim2.new(1, 0, yPos, 0)
-	--		btn.Position = btn.Position = UDim2.new(0, 0, (yPos + padding) * index, 0)
-	--		btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	--		btn.Text = island.Name
-	--		btn.TextScaled = true
-	--		btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-	--		btn.Font = Enum.Font.GothamBold
-	--		btn.Parent = ListOfTPIsland
+	for _, island in ipairs(tpFolder:GetChildren()) do
+		if island:IsA("BasePart") then
+			local btn = Instance.new("TextButton")
+			btn.Size = UDim2.new(1, 0, yPos, 0)
+			btn.Position = btn.Position = UDim2.new(0, 0, (yPos + padding) * index, 0)
+			btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			btn.Text = island.Name
+			btn.TextScaled = true
+			btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+			btn.Font = Enum.Font.GothamBold
+			btn.Parent = ListOfTPIsland
 			
-	--		btn.MouseButton1Click:Connect(function()
-	--			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(island.CFrame)
-	--		end)
-	--		index += 1
-	--	end
-	--end
+			btn.MouseButton1Click:Connect(function()
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(island.CFrame)
+			end)
+			index += 1
+		end
+	end
 
 	local pages = {
 		Main = MainFrame,
