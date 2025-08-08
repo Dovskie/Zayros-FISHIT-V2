@@ -1638,9 +1638,9 @@ _G.AutoFishing = false
 _G.OxygenBypass = false
 
 local mt = getrawmetatable(game)
-setreadonly(mt, false)
+-- setreadonly(mt, false)
 
-local oldNamecall = mt.__namecall
+-- local oldNamecall = mt.__namecall
 
 -- mt.__namecall = newcclosure(function(self, ...)
 -- 	local args = {...}
