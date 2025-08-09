@@ -1623,44 +1623,37 @@
 	local ChargeRod = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/ChargeFishingRod"]
 	local FishingComplete = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RE/FishingCompleted"]
 	local CancelFishing = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/CancelFishingInputs"]
-	local Oxygen = Rs.Packages._Index["sleitnick_net@0.2.0"].net["URE/UpdateOxygen"]
+local Oxygen = Rs.Packages._Index["sleitnick_net@0.2.0"].net["URE/UpdateOxygen"]
 	local spawnBoat = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/SpawnBoat"]
 	local despawnBoat = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/DespawnBoat"]
 	local FishingRadar = Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/UpdateFishingRadar"]
-	local tpFolder = workspace["!!!! ISLAND LOCATIONS !!!!"]
 	local sellAll =  Rs.Packages._Index["sleitnick_net@0.2.0"].net["RF/SellAllItems"]
-	local UIS = game:GetService("UserInputService")
+	local tpFolder = workspace["!!!! ISLAND LOCATIONS !!!!"]
 	local charFolder = workspace.Characters
 
 	local index = 0
 
 	_G.AutoFishing = false
-	_G.OxygenBypass = false
+	local oxygenEnabled = false
 
-	local success, err = pcall(function()
-    local mt = getrawmetatable(game)
-    setreadonly(mt, false)
-    local oldNamecall = mt.__namecall
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
 
-    mt.__namecall = newcclosure(function(self, ...)
-        local args = {...}
-        local method = getnamecallmethod()
+local oldNameCall = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+	local args = {...}
+	local method = getnamecallmethod()
 
-        if self == Oxygen and method == "FireServer" and args[1] == 20 then
-            if _G.OxygenBypass then
-                return oldNamecall(self, 0)
-            else
-                return oldNamecall(self, 20)
-            end
-        end
+	if self == Oxygen and method == "FireServer" and args[1] == 20 then
+		if oxygenEnabled then
+			return oldNameCall(self, 0)
+		else
+			return oldNameCall(self, 20)
+		end
+	end
 
-        return oldNamecall(self, ...)
-    end)
+	return oldNameCall(self, ...)
 end)
-
-if not success then
-    warn("Gagal memodifikasi metatable:", err)
-end
 
 
 	local isOpen = {
@@ -1842,9 +1835,9 @@ end
 
 
 	NoOxygenButton.MouseButton1Click:Connect(function()
-		_G.OxygenBypass = not _G.OxygenBypass
+		oxygenEnabled = not oxygenEnabled
 
-		if _G.OxygenBypass then
+		if oxygenEnabled then
 			NoOxygenButton.Text = "ON"
 		else
 			NoOxygenButton.Text = "OFF"
