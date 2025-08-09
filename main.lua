@@ -1643,19 +1643,20 @@ setreadonly(mt, false)
 local oldNamecall = mt.__namecall
 
 mt.__namecall = newcclosure(function(self, ...)
-    local args = {...}
-    local method = getnamecallmethod()
+	local args = {...}
+	local method = getnamecallmethod()
 
-    if self == Oxygen and method == "FireServer" and args[1] == 20 then
-        if _G.OxygenBypass then
-            return oldNamecall(self, 0)
-        else
-            return oldNamecall(self, 20)
-        end
-    end
+	if self == Oxygen and method == "FireServer" and args[1] == 20 then
+		if _G.OxygenBypass then
+			return oldNamecall(self, 0)
+		else
+			return oldNamecall(self, 20)
+		end
+	end
 
-    return oldNamecall(self, unpack(args))
+	return oldNamecall(self, unpack(args))
 end)
+
 local isOpen = {
 	Island = false,
 	Player = false,
@@ -1830,7 +1831,6 @@ NoOxygenButton.MouseButton1Click:Connect(function()
 	_G.OxygenBypass = not _G.OxygenBypass
 
 	if _G.OxygenBypass then
-		print("wsg")
 		NoOxygenButton.Text = "ON"
 	else
 		NoOxygenButton.Text = "OFF"
