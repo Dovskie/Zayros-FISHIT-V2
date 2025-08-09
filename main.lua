@@ -1638,6 +1638,18 @@ _G.AutoFishing = false
 _G.OxygenBypass = false
 
 local mt = getrawmetatable(game)
+print("[DEBUG] mt:", mt)
+if not mt then
+    warn("[DEBUG] getrawmetatable(game) return NIL")
+end
+
+if mt then
+    print("[DEBUG] mt.__namecall:", mt.__namecall)
+    if not mt.__namecall then
+        warn("[DEBUG] mt.__namecall NIL")
+    end
+end
+
 setreadonly(mt, false)
 
 local oldNamecall = mt.__namecall
