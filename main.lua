@@ -1637,25 +1637,30 @@
 	_G.AutoFishing = false
 	_G.OxygenBypass = false
 
-	local mt = getrawmetatable(game)
-	setreadonly(mt, false)
+	local success, err = pcall(function()
+    local mt = getrawmetatable(game)
+    setreadonly(mt, false)
+    local oldNamecall = mt.__namecall
 
-	local oldNamecall = mt.__namecall
+    mt.__namecall = newcclosure(function(self, ...)
+        local args = {...}
+        local method = getnamecallmethod()
 
-	mt.__namecall = newcclosure(function(self, ...)
-		local args = {...}
-		local method = getnamecallmethod()
+        if self == Oxygen and method == "FireServer" and args[1] == 20 then
+            if _G.OxygenBypass then
+                return oldNamecall(self, 0)
+            else
+                return oldNamecall(self, 20)
+            end
+        end
 
-		if self == Oxygen and method == "FireServer" and args[1] == 20 then
-			if _G.OxygenBypass then
-				return oldNamecall(self, 0)
-			else
-				return oldNamecall(self, 20)
-			end
-		end
+        return oldNamecall(self, ...)
+    end)
+end)
 
-		return oldNamecall(self, unpack(args))
-	end)
+if not success then
+    warn("Gagal memodifikasi metatable:", err)
+end
 
 
 	local isOpen = {
