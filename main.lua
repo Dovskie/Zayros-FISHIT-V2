@@ -1643,19 +1643,35 @@ setreadonly(mt, false)
 local oldNamecall = mt.__namecall
 
 mt.__namecall = newcclosure(function(self, ...)
-	local args = {...}
-	local method = getnamecallmethod()
+    local args = {...}
+    local method = getnamecallmethod()
 
-	if self == Oxygen and method == "FireServer" and args[1] == 20 then
-		if _G.OxygenBypass then
-			return oldNamecall(self, 0)
-		else
-			return oldNamecall(self, 20)
-		end
-	end
+    -- Debug print biar kita tahu kondisi saat hook terpanggil
+    if not self then
+        warn("[DEBUG] self NIL di __namecall")
+    end
+    if not Oxygen then
+        warn("[DEBUG] Oxygen NIL di __namecall")
+    end
+    if not method then
+        warn("[DEBUG] method NIL di __namecall")
+    end
+    if args[1] == nil then
+        warn("[DEBUG] args[1] NIL di __namecall")
+    end
 
-	return oldNamecall(self, unpack(args))
+    -- Proteksi biar gak error
+    if Oxygen and self == Oxygen and method == "FireServer" and args[1] == 20 then
+        if _G.OxygenBypass then
+            return oldNamecall(self, 0)
+        else
+            return oldNamecall(self, 20)
+        end
+    end
+
+    return oldNamecall(self, unpack(args))
 end)
+
 
 local isOpen = {
 	Island = false,
